@@ -3,12 +3,8 @@ import { Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { styles } from '../theme/appTheme'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
-interface MenuItem {
-    name: string
-    icon: string
-    components: string
-}
+import { MenuItem } from '../interfaces/appInterfaces'
+import { FlatListMenuItem } from '../components/FlatListMenuItem'
 
 const menuItems = [
     {
@@ -26,13 +22,6 @@ const menuItems = [
 export const HomeScreen = () => {
 
     const { top } = useSafeAreaInsets()
-
-    const renderMenuItem = (menuItem: MenuItem) => (
-        <View>
-            <Text>{menuItem.name} - {menuItem.icon}</Text>
-        </View>
-    )
-    
 
     const renderListHeader = () => (
             
@@ -61,12 +50,14 @@ export const HomeScreen = () => {
                 data={menuItems}
                 // funcion a la que tocar devolverle un elemento JSX
                 // Este elemto en el que va a renderizar la info de la data
-                renderItem={({ item }) => renderMenuItem(item)}
+                renderItem={({ item }) => <FlatListMenuItem menuItem={ item }/>}
                 // llave unica para cada elemnto del flatList ( tipo String )
                 keyExtractor={(item) => item.name}
                 ListHeaderComponent={ renderListHeader }
                 ItemSeparatorComponent={ itemSeparator }
             />
+            
         </View>
     )
+
 }
