@@ -6,19 +6,29 @@ import { SwitchScreen } from '../screens/SwitchScreen';
 import { AlertsScreen } from '../screens/AlertsScreen';
 import { TextInputScreen } from '../screens/TextInputScreen';
 import { PullToRefresh } from '../screens/PullToRefresh';
+import { CustomSectionListScreen } from '../screens/CustomSectionListScreen';
 
 const Stack = createStackNavigator();
 
 export const Navigator = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="HomeScreen" component={ HomeScreen } />
-      <Stack.Screen name="Animation101Screen" component={ Animation101Screen } />
-      <Stack.Screen name="Animation102Screen" component={ Animation102Screen } />
-      <Stack.Screen name="SwitchScreen" component={ SwitchScreen } />
-      <Stack.Screen name="AlertsScreen" component={ AlertsScreen } />
-      <Stack.Screen name="TextInputScreen" component={ TextInputScreen } />
-      <Stack.Screen name="PullToRefresh" component={ PullToRefresh } />
-    </Stack.Navigator>
-  );
+    return (
+        <Stack.Navigator
+            screenOptions={{ 
+                headerShown: false,
+                cardStyle: {
+                  backgroundColor: 'white'
+                }
+            }}
+            
+        >
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
+            <Stack.Screen name="Animation102Screen" component={Animation102Screen} />
+            <Stack.Screen name="SwitchScreen" component={SwitchScreen} />
+            <Stack.Screen name="AlertsScreen" component={AlertsScreen} />
+            <Stack.Screen name="TextInputScreen" component={TextInputScreen} />
+            <Stack.Screen name="PullToRefresh" component={PullToRefresh} />
+            <Stack.Screen name="CustomSectionListScreen" component={CustomSectionListScreen} />
+        </Stack.Navigator>
+    );
 }
