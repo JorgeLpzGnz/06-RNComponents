@@ -16,5 +16,5 @@ export const HeaderTitle = ( { title }: Props ) => {
             <Text style={styles.title}>{ title }</Text>
         </View>
     )
-    
+
 }
