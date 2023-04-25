@@ -19,7 +19,7 @@ export const Navigator = () => {
             screenOptions={{ 
                 headerShown: false,
                 cardStyle: {
-                  backgroundColor: 'white'
+                //   backgroundColor: 'white'
                 }
             }}
             
