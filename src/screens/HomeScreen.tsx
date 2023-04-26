@@ -9,7 +9,6 @@ import { HeaderTitle } from '../components/HeaderTitle'
 import { ItemSeparator } from '../components/ItemSeparator'
 
 export const HomeScreen = () => {
-
     
     return (
         <View style={{ flex: 1, ...styles.globalMargin }}>
