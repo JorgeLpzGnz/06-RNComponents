@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Modal, Text, View } from 'react-native'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
+import { ThemeContext } from '../context/themeContext/ThemeContext'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export const ModalScreen = () => {
 
     const [isVisible, setIsVisible] = useState( false )
+
+    const { theme: { colors } } = useContext( ThemeContext )
 
     return (
         <View style={ styles.globalMargin}>
@@ -13,6 +17,7 @@ export const ModalScreen = () => {
             <Button
                 title="Abrir modal"
                 onPress={() => setIsVisible( true ) }
+                color={ colors.primary }
             />
 
             <Modal

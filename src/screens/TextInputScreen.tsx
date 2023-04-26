@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
 import { CustomSwitch } from '../components/CustomSwitch'
 import { useForm } from '../Hooks/useForm'
+import { ThemeContext } from '../context/themeContext/ThemeContext'
 
 export const TextInputScreen = () => {
 
@@ -13,6 +14,8 @@ export const TextInputScreen = () => {
         phone: '',
         isSubscribed: true,
     })
+
+    const { theme: { colors, dividerColor } } = useContext( ThemeContext )
 
     return (
         <KeyboardAvoidingView
@@ -29,14 +32,23 @@ export const TextInputScreen = () => {
                         <HeaderTitle title="TextInputs"/>
 
                         <TextInput
-                            style={ stylesScreen.inputStyle }
+                            style={{ 
+                                ...stylesScreen.inputStyle,
+                                borderColor: colors.border,
+                                color: colors.text,
+                            }}
                             placeholder="Ingrese su nombre"
                             autoCorrect={ false }
                             autoCapitalize="words"
                             onChangeText={( value ) => onChange( value, 'name' )}
+                            placeholderTextColor={ dividerColor }
                         />
                         <TextInput
-                            style={ stylesScreen.inputStyle }
+                            style={{ 
+                                ...stylesScreen.inputStyle,
+                                borderColor: colors.border,
+                                color: colors.text
+                            }}
                             placeholder="Ingrese su email"
                             autoCorrect={ false }
                             autoCapitalize="none"
@@ -44,10 +56,11 @@ export const TextInputScreen = () => {
                             keyboardType="email-address"
                             // Disponible en IOS
                             keyboardAppearance="dark"
+                            placeholderTextColor={ dividerColor }
                         />
 
                         <View style={{ flexDirection: 'row',}}>
-                            <Text style={{ flex: 1,}}>Suscribirse</Text>
+                            <Text style={{ flex: 1, color: colors.text}}>Suscribirse</Text>
                             <CustomSwitch 
                                 isOn={ isSubscribed }
                                 onChange={ ( value ) => onChange( value, 'isSubscribed') }
@@ -58,11 +71,15 @@ export const TextInputScreen = () => {
                         <HeaderTitle title={ JSON.stringify( form, null, 3 )}/>
 
                         <TextInput
-                            style={ stylesScreen.inputStyle }
+                            style={{ 
+                                ...stylesScreen.inputStyle,
+                                borderColor: colors.border,
+                                color: colors.text
+                            }}
                             placeholder="Ingrese su telefono"
                             onChangeText={( value ) => onChange( value, 'phone' )}
                             keyboardType="phone-pad"
-
+                            placeholderTextColor={ dividerColor }
                         />
 
                     </View>
@@ -81,7 +98,7 @@ export const TextInputScreen = () => {
 const stylesScreen = StyleSheet.create({
     inputStyle: {
         borderWidth: 1,
-        borderColor: 'rgba( 0, 0, 0, 0.3 )',
+        // borderColor: 'rgba( 0, 0, 0, 0.3 )',
         height: 50,
         paddingHorizontal: 10,
         borderRadius: 10,

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { RefreshControl, SafeAreaView, StyleSheet, View } from 'react-native'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { ThemeContext } from '../context/themeContext/ThemeContext'
 
 export const PullToRefresh = () => {
 
@@ -12,6 +13,8 @@ export const PullToRefresh = () => {
     const [refreshing, setRefreshing] = useState(false)
 
     const [data, setData] = useState<string>()
+
+    const { theme: { colors, dividerColor } } = useContext( ThemeContext )
 
     const onRefresh = () => {
         setRefreshing(true)
@@ -34,13 +37,13 @@ export const PullToRefresh = () => {
                     refreshing={refreshing}
                     onRefresh={onRefresh}
                     progressViewOffset={10}
-                    progressBackgroundColor="#5856d6"
+                    progressBackgroundColor={ dividerColor }
                     // is cambiando el color ( Solo android )
-                    colors={['white', 'red', 'orange']}
+                    colors={[ colors.background ]}
                     // Solo IOS
                     style={{ backgroundColor: '#5856d6'}}
                     // Solo IOS
-                    tintColor="white"
+                    tintColor={ colors.text }
                     // title="white"
                 />
             }
