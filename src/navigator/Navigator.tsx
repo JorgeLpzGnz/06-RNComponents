@@ -22,7 +22,7 @@ export const Navigator = () => {
     const { theme } = useContext( ThemeContext )
 
     return (
-        <NavigationContainer theme={ theme }>
+        <NavigationContainer theme={ theme } >
             <Stack.Navigator
                 screenOptions={{ 
                     headerShown: false,
